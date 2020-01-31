@@ -1,0 +1,24 @@
+name: 'K8s Privilege Escalation Check'
+description: 'Check Kubernetes workload privilege escalation when a PR is open.'
+inputs:
+  sourceDir:
+    description: 'Source directory of YAML files (master)'
+    required: true
+    default: ''
+  targetDir:
+    description: 'Target directory of YAML files (PR branch)'
+    required: true
+    default: ''
+outputs:
+  escalation_report:
+    description: 'Privilege escalation report (in JSON format)'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.sourceDir }}
+    - ${{ inputs.targetDir }}
+branding:
+  icon: alert-circle
+  color: blue
+
