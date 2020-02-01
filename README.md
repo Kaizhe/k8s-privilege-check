@@ -61,4 +61,10 @@ Privilege escalation report
   with:
     sourceDir: '/master/yamls'
     targetDir: '/candidate/yamls'
+# evaluate escalation report
+- name: Post Privilege Check
+  run: |
+    echo ${{ steps.k8s_privilege_check.outputs.escalation_report }}
+    # slack
+    # or other git action like adding another reviewer
 ```
