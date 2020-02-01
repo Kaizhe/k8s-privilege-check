@@ -11,7 +11,7 @@ if [ "$SRC" = "" ]; then
 fi
 
 if [ "$TARGET" = "" ]; then
-  echo "Source directory is empty"
+  echo "Target directory is empty"
   exit 1
 fi
 echo "Source Directory: $SRC"
