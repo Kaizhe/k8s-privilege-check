@@ -64,7 +64,7 @@ Privilege escalation report
 # evaluate escalation report
 - name: Post Privilege Check
   run: |
-    echo ${{ steps.k8s_privilege_check.outputs.escalation_report }}
+    echo ${{ toJSON(steps.k8s_privilege_check.outputs.escalation_report) }}
     # slack
     # or other git action like adding another reviewer
 ```
