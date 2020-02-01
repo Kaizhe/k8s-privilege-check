@@ -10,6 +10,6 @@ echo "Target Directory: $TARGET"
 
 /kube-psp-advisor compare --sourceDir "$SRC" --targetDir "$TARGET"
 
-report=$(/kube-psp-advisor compare --sourceDir "$SRC" --targetDir "$TARGET" --json)
+report="$(/kube-psp-advisor compare --sourceDir "$SRC" --targetDir "$TARGET" --json)"
 
 echo "::set-output name=escalation_report::${report}"
