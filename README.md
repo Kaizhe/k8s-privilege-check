@@ -311,30 +311,4 @@ This action checks k8s workload privilege escalation when a PR is open
   }
 }
 ```
-
-## Example usage
-```
-# checkout master branch
-- uses: actions/checkout@v2
-    with:
-      ref: master
-      path: master
-# checkout PR branch
-- uses: actions/checkout@v2
-    with:
-      path: candidate
-      ref: ${{ github.event.pull_request.head.sha }}
-# pass the yamls directory to k8s-privilege-check git action
-- name: K8s workload privilege escalation check
-  uses: Kaizhe/k8s-privilege-check@v1.0.0
-  with:
-    sourceDir: '/master/yamls'
-    targetDir: '/candidate/yamls'
-# evaluate escalation report
-- name: Post Privilege Check
-  run: |
-    echo ${{ toJSON(steps.k8s_privilege_check.outputs.escalation_report) }}
-    # slack
-    # or other git action like adding another reviewer
-```
 The above escalation report is generated in [PR](https://github.com/Kaizhe/k8s-workloads/pull/13)
